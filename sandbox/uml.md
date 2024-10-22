@@ -89,6 +89,21 @@ class Reply {
     - visibility: Visibility
 }
 
+class Vote {
+    - vote_ID: int
+    - type: VoteType
+    - object_type: string
+    - object_ID: int
+    - user: User
+    - added_at: timestamp 
+}
+
+class VoteType {
+    <<enumeration>>
+    UP
+    DOWN
+}
+
 class Visibility {
     <<enumeration>>
     PUBLIC
@@ -118,6 +133,10 @@ Topic "1" -- "0..*" Log
 Post "1" -- "0..*" Log
 Reply "1" -- "0..*" Log
 User "1" -- "0..*" Log
+Post "1" -- "0..*" Vote
+Reply "1" -- "0..*" Vote
+User "1" -- "0..*" Vote
+Vote ..> VoteType
 
 %% Transaction records
 
