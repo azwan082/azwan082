@@ -8,7 +8,8 @@ class User {
     - user_ID: int
     - group: Group
     - email: string
-    - password_hash: string
+    - hashed_password: string
+    - salt: string
     - verification_token: string
     - registered_at: timestamp
     - timezone: UserTimezone
@@ -142,15 +143,15 @@ class Task {
 
 class TaskType {
     <<enumeration>>
-    IN,
-    OUT,
-    SAVING,
+    IN
+    OUT
+    SAVING
     INSTALLMENT
 }
 
 class TaskRepeat {
     <<enumeration>>
-    ONCE,
+    NONE
     MONTHLY
 }
 
