@@ -11,7 +11,7 @@ class User {
     - hashed_password: string
     - salt: string
     - verification_token: string
-    - registered_at: timestamp
+    - registered_at: DateTime
     - timezone: UserTimezone
     - currency: UserCurrency
 }
@@ -59,8 +59,8 @@ class Topic {
     - title: string
     - slug: string
     - description: string
-    - created_at: timestamp
-    - updated_at: timestamp
+    - created_at: DateTime
+    - updated_at: DateTime
     - visibility: Visibility
 }
 
@@ -71,8 +71,8 @@ class Post {
     - title: string
     - slug: string
     - content: string
-    - created_at: timestamp
-    - updated_at: timestamp
+    - created_at: DateTime
+    - updated_at: DateTime
     - pinned_reply: Reply
     - visibility: Visibility
 }
@@ -82,8 +82,8 @@ class Reply {
     - post: Post
     - user: User
     - content: string
-    - created_at: timestamp
-    - updated_at: timestamp
+    - created_at: DateTime
+    - updated_at: DateTime
     - vote_up: int
     - vote_down: int
     - visibility: Visibility
@@ -95,7 +95,7 @@ class Vote {
     - object_type: ObjectType
     - object_ID: int
     - user: User
-    - added_at: timestamp 
+    - added_at: DateTime 
 }
 
 class VoteType {
@@ -116,7 +116,7 @@ class Log {
     - log_ID: int
     - action: string
     - user: User
-    - added_at: timestamp
+    - added_at: DateTime
     - object_type: ObjectType
     - object_ID: int
     - metadata: string 
@@ -157,8 +157,9 @@ class Transaction {
     - task: Task
     - title: string
     - amount: float
-    - created_at: timestamp
-    - updated_at: timestamp
+    - date: Date
+    - created_at: DateTime
+    - updated_at: DateTime
     - remark: string
 }
 
@@ -187,12 +188,13 @@ class Task {
     - user: User
     - type: TaskType
     - repeat: TaskRepeat
-    - repeat_until: timestamp
+    - repeat_until: Date
     - title: string
     - amount: float
     - prev_amount: float
-    - created_at: timestamp
-    - updated_at: timestamp
+    - date: Date
+    - created_at: DateTime
+    - updated_at: DateTime
 }
 
 class TaskType {
