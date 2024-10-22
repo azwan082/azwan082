@@ -117,4 +117,20 @@ Post_ID --> Post_vote
 Forum --> Reply
 Reply --> Reply_ID
 Reply_ID --> Reply_vote 
+
+class Transaction["/transaction"] {
+    <<Resource>>
+    get(user_ID, month)
+    post(user_ID, body)
+}
+
+class Transaction_ID["/{txn_ID}"] {
+    <<Resource>>
+    get(txn_ID)
+    put(txn_ID, body)
+    delete(txn_ID)
+}
+
+App --> Transaction
+Transaction --> Transaction_ID
 ```
