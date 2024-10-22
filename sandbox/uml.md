@@ -92,7 +92,7 @@ class Reply {
 class Vote {
     - vote_ID: int
     - type: VoteType
-    - object_type: string
+    - object_type: ObjectType
     - object_ID: int
     - user: User
     - added_at: timestamp 
@@ -117,9 +117,16 @@ class Log {
     - action: string
     - user: User
     - added_at: timestamp
-    - object_type: string
+    - object_type: ObjectType
     - object_ID: int
     - metadata: string 
+}
+
+class ObjectType {
+    <<enumeration>>
+    TOPIC 
+    POST 
+    REPLY
 }
 
 User "1" -- "0..*" Topic
@@ -137,6 +144,8 @@ Post "1" -- "0..*" Vote
 Reply "1" -- "0..*" Vote
 User "1" -- "0..*" Vote
 Vote ..> VoteType
+Vote ..> ObjectType
+Log ..> ObjectType
 
 %% Transaction records
 
