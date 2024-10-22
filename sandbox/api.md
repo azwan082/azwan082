@@ -16,9 +16,11 @@ class User["/user"] {
 class User_ID["/{user_ID}"] {
     <<Resource>>
     get(user_ID)
-    post(user_ID, password, timezone, currency, group_ID)
+    post(user_ID, *body)
     delete(user_ID, password)
 }
+
+note for User_ID "post(*body: password, timezone,\ncurrency, group_ID)"
 
 class User_login["/login"] {
     <<Resource>>
@@ -121,15 +123,19 @@ Reply_ID --> Reply_vote
 class Transaction["/transaction"] {
     <<Resource>>
     get(user_ID, month)
-    post(user_ID, body)
+    post(user_ID, *body)
 }
+
+note for Transaction "post(*body: title, amount, date,\ntype, remark)"
 
 class Transaction_ID["/{txn_ID}"] {
     <<Resource>>
     get(txn_ID)
-    put(txn_ID, body)
+    put(txn_ID, *body)
     delete(txn_ID)
 }
+
+note for Transaction_ID "put(*body: title, amount, date,\ntype, remark)"
 
 App --> Transaction
 Transaction --> Transaction_ID
@@ -137,13 +143,26 @@ Transaction --> Transaction_ID
 class Task["/task"] {
     <<Resource>>
     get(user_ID, month)
-    post(user_ID, title, amount, date, type, repeat, repeat_until)
+    post(user_ID, *body)
 }
+
+note for Task "put(*body: title, amount, date,\ntype, repeat, repeat_until)"
 
 class Task_ID["/{task_ID}"] {
     <<Resource>>
     get(task_ID)
-    put(task_ID, title, amount, date, type, repeat, repeat_until, prev_amount)
+    put(task_ID, *body)
     delete(task_ID)
 }
+
+note for Task_ID "put(*body: title, amount, date,\ntype, repeat, repeat_until,\nprev_amount)"
+
+class Task_mark["/mark"] {
+    <<Resource>>
+    post(task_ID, status)
+}
+
+App --> Task
+Task --> Task_ID
+Task_ID --> Task_mark
 ```
