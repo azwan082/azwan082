@@ -47,6 +47,10 @@ User --> User_logout
 User --> User_verify
 User --> User_recover
 
+class Forum["/forum"] {
+    <<Resource>>
+}
+
 class Topic["/topic"] {
     <<Resource>>
     get(offset, limit)
@@ -62,8 +66,8 @@ class Topic_ID["/{topic_ID}"] {
 
 class Post["/post"] {
     <<Resource>>
-    get(offset, limit)
-    post(title, content)
+    get(topic_ID, user_ID, offset, limit)
+    post(topic_ID, title, content)
 }
 
 class Post_ID["/{post_ID}"] {
@@ -75,19 +79,19 @@ class Post_ID["/{post_ID}"] {
 
 class Post_pin["/pin"] {
     <<Resource>>
-    post(reply_ID)
+    post(post_ID, reply_ID)
 }
 
 class Post_vote["/vote"] {
     <<Resource>>
-    get(offset, limit)
-    post(type)
+    get(post_ID, offset, limit)
+    post(post_ID, type)
 }
 
 class Reply["/reply"] {
     <<Resource>>
-    get(offset, limit)
-    post(content)
+    get(post_ID, user_ID, offset, limit)
+    post(post_ID, content)
 }
 
 class Reply_ID["/{reply_ID}"] {
@@ -99,17 +103,18 @@ class Reply_ID["/{reply_ID}"] {
 
 class Reply_vote["/vote"] {
     <<Resource>>
-    get(offset, limit)
-    post(type)
+    get(reply_ID, offset, limit)
+    post(reply_ID, type)
 }
 
-App --> Topic
+App --> Forum
+Forum --> Topic
 Topic --> Topic_ID
-Topic_ID --> Post
+Forum --> Post
 Post --> Post_ID
 Post_ID --> Post_pin
 Post_ID --> Post_vote
-Post_ID --> Reply
+Forum --> Reply
 Reply --> Reply_ID
 Reply_ID --> Reply_vote 
 ```
