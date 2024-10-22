@@ -187,6 +187,7 @@ class Task {
     - user: User
     - type: TaskType
     - repeat: TaskRepeat
+    - repeat_until: timestamp
     - title: string
     - amount: float
     - prev_amount: float
