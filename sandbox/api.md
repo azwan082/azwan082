@@ -133,4 +133,17 @@ class Transaction_ID["/{txn_ID}"] {
 
 App --> Transaction
 Transaction --> Transaction_ID
+
+class Task["/task"] {
+    <<Resource>>
+    get(user_ID, month)
+    post(user_ID, title, amount, date, type, repeat, repeat_until)
+}
+
+class Task_ID["/{task_ID}"] {
+    <<Resource>>
+    get(task_ID)
+    put(task_ID, title, amount, date, type, repeat, repeat_until, prev_amount)
+    delete(task_ID)
+}
 ```
