@@ -97,6 +97,16 @@ class Visibility {
     PRIVATE
 }
 
+class Log {
+    - log_ID: int
+    - action: string
+    - user: User
+    - added_at: timestamp
+    - object_type: string
+    - object_ID: int
+    - metadata: string 
+}
+
 User "1" -- "0..*" Topic
 User "1" -- "0..*" Post
 User "1" -- "0..*" Reply
@@ -104,6 +114,10 @@ Topic "1" --> "0..*" Topic: has child topics
 Topic "1" -- "0..*" Post
 Post "1" -- "0..*" Reply
 Post "1" --> "0..1" Reply: has pinned reply 
+Topic "1" -- "0..*" Log
+Post "1" -- "0..*" Log
+Reply "1" -- "0..*" Log
+User "1" -- "0..*" Log
 
 %% Transaction records
 
