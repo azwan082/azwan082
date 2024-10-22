@@ -61,6 +61,7 @@ class Topic {
     - description: string
     - created_at: timestamp
     - updated_at: timestamp
+    - visibility: Visibility
 }
 
 class Post {
@@ -73,17 +74,27 @@ class Post {
     - created_at: timestamp
     - updated_at: timestamp
     - pinned_reply: Reply
+    - visibility: Visibility
 }
 
 class Reply {
     - reply_ID: int
-    - post_ID: int
-    - user_ID: int
+    - post: Post
+    - user: User
     - content: string
     - created_at: timestamp
     - updated_at: timestamp
     - vote_up: int
     - vote_down: int
+    - visibility: Visibility
+}
+
+class Visibility {
+    <<enumeration>>
+    PUBLIC
+    MEMBERS_ONLY
+    HIDDEN
+    PRIVATE
 }
 
 User "1" -- "0..*" Topic
