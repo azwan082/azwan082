@@ -98,6 +98,7 @@ class Reply {
 class Tag {
     - tag_ID: int
     - name: string
+    - cap: Capability
 }
 
 class PostTag {
@@ -124,6 +125,7 @@ class Visibility {
     <<enumeration>>
     PUBLIC
     MEMBERS_ONLY
+    TAG_CAPABILITY
     PRIVATE
     %% private = draft, read/write by author only
     HIDDEN
@@ -156,6 +158,7 @@ Post "1" -- "0..*" Reply
 Post "1" --> "0..1" Reply: has pinned reply 
 Post "1" -- "0..*" PostTag
 Tag "1" -- "0..*" PostTag
+Tag "1" -- "0..1" Capability
 Topic "1" -- "0..*" Log
 Post "1" -- "0..*" Log
 Reply "1" -- "0..*" Log
