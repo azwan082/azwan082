@@ -162,6 +162,10 @@ Forum --> Reply
 Reply --> Reply_ID
 Reply_ID --> Reply_vote 
 
+class Wallet["/wallet"] {
+    <<Resource>>
+}
+
 class Transaction["/transaction"] {
     <<Resource>>
     get(user_ID, month)
@@ -179,7 +183,8 @@ class Transaction_ID["/{txn_ID}"] {
 
 note for Transaction_ID "put() *body:\n- title\n- amount\n- date\n- type\n- remark"
 
-App --> Transaction
+App --> Wallet
+Wallet --> Transaction
 Transaction --> Transaction_ID
 
 class Task["/task"] {
@@ -204,7 +209,7 @@ class Task_mark["/mark"] {
     post(task_ID, status)
 }
 
-App --> Task
+Wallet --> Task
 Task --> Task_ID
 Task_ID --> Task_mark
 ```
