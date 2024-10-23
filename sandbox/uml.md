@@ -6,7 +6,6 @@ classDiagram
 
 class User {
     - user_ID: int
-    - group: Group
     - email: string
     - hashed_password: string
     - salt: string
@@ -22,12 +21,18 @@ class Group {
 }
 
 class Capability {
+    - cap_ID: int
     - name: string
 }
 
+class UserGroup {
+    - user: User
+    - group: Group
+}
+
 class GroupCapability {
-    - group_ID: int
-    - capability: string
+    - group: Group
+    - cap: Capability
 }
 
 class UserTimezone {
@@ -44,7 +49,8 @@ class UserCurrency {
     ..etc
 }
 
-User "1..*" -- "1" Group
+User "1" -- "0..*" UserGroup
+Group "1" -- "0..*" UserGroup
 Group "1" -- "0..*" GroupCapability
 Capability "1" -- "0..*" GroupCapability
 User ..> UserTimezone
@@ -87,6 +93,16 @@ class Reply {
     - vote_up: int
     - vote_down: int
     - visibility: Visibility
+}
+
+class Tag {
+    - tag_ID: int
+    - name: string
+}
+
+class PostTag {
+    - post: Post
+    - tag: Tag
 }
 
 class Vote {
@@ -136,6 +152,8 @@ Topic "1" --> "0..*" Topic: has child topics
 Topic "1" -- "0..*" Post
 Post "1" -- "0..*" Reply
 Post "1" --> "0..1" Reply: has pinned reply 
+Post "1" -- "0..*" PostTag
+Tag "1" -- "0..*" PostTag
 Topic "1" -- "0..*" Log
 Post "1" -- "0..*" Log
 Reply "1" -- "0..*" Log
