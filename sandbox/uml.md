@@ -11,7 +11,7 @@ class User {
     - hashed_password: string
     - salt: string
     - verification_token: string
-    - registered_at: DateTime
+    - registered_at: Timestamp
     - timezone: UserTimezone
     - currency: UserCurrency
 }
@@ -59,8 +59,8 @@ class Topic {
     - title: string
     - slug: string
     - description: string
-    - created_at: DateTime
-    - updated_at: DateTime
+    - created_at: Timestamp
+    - updated_at: Timestamp
     - visibility: Visibility
 }
 
@@ -71,8 +71,8 @@ class Post {
     - title: string
     - slug: string
     - content: string
-    - created_at: DateTime
-    - updated_at: DateTime
+    - created_at: Timestamp
+    - updated_at: Timestamp
     - pinned_reply: Reply
     - visibility: Visibility
 }
@@ -82,8 +82,8 @@ class Reply {
     - post: Post
     - user: User
     - content: string
-    - created_at: DateTime
-    - updated_at: DateTime
+    - created_at: Timestamp
+    - updated_at: Timestamp
     - vote_up: int
     - vote_down: int
     - visibility: Visibility
@@ -95,7 +95,7 @@ class Vote {
     - object_type: ObjectType
     - object_ID: int
     - user: User
-    - added_at: DateTime 
+    - added_at: Timestamp 
 }
 
 class VoteType {
@@ -108,15 +108,17 @@ class Visibility {
     <<enumeration>>
     PUBLIC
     MEMBERS_ONLY
-    HIDDEN
     PRIVATE
+    %% private = draft, read/write by author only
+    HIDDEN
+    %% hidden = hidden from public / members_only, moderated by admin
 }
 
 class Log {
     - log_ID: int
     - action: string
     - user: User
-    - added_at: DateTime
+    - added_at: Timestamp
     - object_type: ObjectType
     - object_ID: int
     - metadata: string 
@@ -158,8 +160,8 @@ class Transaction {
     - title: string
     - amount: float
     - date: Date
-    - created_at: DateTime
-    - updated_at: DateTime
+    - created_at: Timestamp
+    - updated_at: Timestamp
     - remark: string
 }
 
@@ -194,8 +196,8 @@ class Task {
     - amount: float
     - prev_amount: float
     - date: Date
-    - created_at: DateTime
-    - updated_at: DateTime
+    - created_at: Timestamp
+    - updated_at: Timestamp
 }
 
 class TaskType {
