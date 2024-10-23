@@ -7,6 +7,10 @@ class App {
     <<Application>>
 }
 
+class Auth["/auth"] {
+    <<Resource>>
+}
+
 class User["/user"] {
     <<Resource>>
     get(offset, limit)
@@ -20,7 +24,7 @@ class User_ID["/{user_ID}"] {
     delete(user_ID, password)
 }
 
-note for User_ID "put() *body:\n- password\n- timezone\n- currency\n- group_ID"
+note for User_ID "put() *body:\n- password\n- timezone\n- currency\n- group_ID[]"
 
 class User_login["/login"] {
     <<Resource>>
@@ -42,12 +46,50 @@ class User_recover["/recover"] {
     post(email)
 }
 
-App --> User
+App --> Auth
+Auth --> User
 User --> User_ID
 User --> User_login
 User --> User_logout
 User --> User_verify
 User --> User_recover
+
+class Group["/group"] {
+    <<Resource>>
+    get(offset, limit)
+    post(name)
+}
+
+class Group_ID["/{group_ID}"] {
+    <<Resource>>
+    get(group_ID)
+    put(group_ID, name)
+    delete(group_ID)
+}
+
+class Group_assign["/assign"] {
+    <<Resource>>
+    post(group_ID, cap_ID[])
+}
+
+class Capability["/cap"] {
+    <<Resource>>
+    get(offset, limit)
+    post(name)
+}
+
+class Capability_ID["/{cap_ID}"] {
+    <<Resource>>
+    get(cap_ID)
+    put(cap_ID, name)
+    delete(cap_ID)
+}
+
+Auth --> Group
+Group --> Group_ID
+Group_ID --> Group_assign
+Auth --> Capability
+Capability --> Capability_ID
 
 class Forum["/forum"] {
     <<Resource>>
