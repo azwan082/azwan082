@@ -168,6 +168,7 @@ class TransactionType {
     IN
     OUT
     SAVING
+    MOVING
 }
 
 class TransactionStatus {
@@ -202,6 +203,7 @@ class TaskType {
     IN
     OUT
     SAVING
+    MOVING
     INSTALLMENT
 }
 
