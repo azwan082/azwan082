@@ -1,6 +1,6 @@
 💻 Software Developer  
 
-🛠 [Wordpress](https://wordpress.org), [Bootstrap](https://getbootstrap.com), [Reflex](https://reflex.dev), [Docker](https://www.docker.com), [Kubernetes](https://k0sproject.io)
+🛠 [Wordpress](https://wordpress.org), [Bootstrap](https://getbootstrap.com), [NodeJS](https://nodejs.org), [Reflex](https://reflex.dev), [Docker](https://www.docker.com), [Kubernetes](https://k0sproject.io)
 
 ✏️ Author of [azwan082.my](https://azwan082.my) 
 
