@@ -1,5 +1,7 @@
-💻 Web developer  
+💻 Software Developer  
+🛠 Wordpress, Bootstrap, Reflex, Docker, Kubernetes
 ✏️ Author of [azwan082.my](https://azwan082.my)
+📍 Cyberjaya, Selangor
 
 <!---
 💻 Web app developer - PHP + MySQL + JS (Wordpress + jQuery)  
