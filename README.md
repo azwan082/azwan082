@@ -1,6 +1,9 @@
 💻 Software Developer  
-🛠 Wordpress, Bootstrap, Reflex, Docker, Kubernetes
-✏️ Author of [azwan082.my](https://azwan082.my)
+
+🛠 [Wordpress](https://wordpress.org), [Bootstrap](https://getbootstrap.com), [Reflex](https://reflex.dev), [Docker](https://www.docker.com), [Kubernetes](https://k0sproject.io)
+
+✏️ Author of [azwan082.my](https://azwan082.my) 
+
 📍 Cyberjaya, Selangor
 
 <!---
